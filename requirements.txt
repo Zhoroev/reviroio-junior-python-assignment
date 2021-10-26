@@ -1,0 +1,5 @@
+beautifulsoup4
+django-environ
+django
+psycopg2-binary
+requests

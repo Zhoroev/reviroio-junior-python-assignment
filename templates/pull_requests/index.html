@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Pull Requests
+{% endblock %}
+
+{% block content %}
+
+ <form action="{% url 'user_requests_url' %}" method="post">
+     {% csrf_token %}
+        <div class="form-group mb-3">
+            {{ user_request_form }}
+        </div>
+      <button type="submit">Send</button>
+    </form>
+    <a href="{% url 'user_request_results_url' %}">Get pull requests</a>
+    {% for user_request_result in user_request_results %}
+        <div class="card mb-5">
+            <div class="card-header">
+                <h6>{{user_request_result.name}}</h6>
+                <h6>Reviewer: {{user_request_result.reviewer}}</h6>
+                <h6>Assignee: {{user_request_result.assignee}}</h6>
+                <a href="{{user_request_result.link}}">{{user_request_result.link}}</a>
+            </div>
+    </div>
+    {% endfor %}
+{% endblock %}
